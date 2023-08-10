@@ -1,0 +1,9 @@
+# {{ name }} Demo
+[![Tuist badge](https://img.shields.io/badge/Powered%20by-Tuist-blue)](https://tuist.io)
+
+## Getting Started
+
+From the source root, generate the Example Project using [tuist](https://docs.tuist.io/tutorial/get-started) via
+```
+tuist generate -p Example
+```

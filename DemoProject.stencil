@@ -1,0 +1,29 @@
+import ProjectDescription
+
+let project = Project(
+  name: "{{ name }}",
+  options: .options(
+    textSettings: .textSettings(
+      indentWidth: 2,
+      tabWidth: 2
+    )
+  ),
+  packages: [
+    .local(path: .relativeToManifest("..")),
+    .remote(url: "https://github.com/apple/swift-argument-parser.git", requirement: .upToNextMajor(from: "1.2.0")),
+  ],
+  targets: [
+    Target(
+      name: "{{ name }}-demo",
+      platform: .macOS,
+      product: .commandLineTool,
+      bundleId: "edu.demo.{{ name }}",
+      sources: [ "Demo/**" ],
+      dependencies: [
+        .package(product: "CLITools"),
+        .package(product: "ArgumentParser"),
+        .package(product: "{{ name }}"),
+      ]
+    ),
+  ]
+)

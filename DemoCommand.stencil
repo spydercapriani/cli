@@ -1,0 +1,29 @@
+import Foundation
+import ArgumentParser
+import ConsoleUI
+import {{ name }}
+
+@main
+struct Demo: ParsableCommand {
+  
+  static let configuration: CommandConfiguration = .init(
+    commandName: "demo",
+    abstract: "Demo command-line tool for highlighting features of {{ name }} library",
+    subcommands: [
+      Feature.self,
+    ],
+    defaultSubcommand: Feature.self
+  )
+}
+
+struct Feature: ParsableCommand {
+  
+  static let configuration: CommandConfiguration = .init(
+    commandName: "feature",
+    abstract: "Highlights features of {{ name }} library."
+  )
+  
+  func run() throws {
+    console.success("Hello World!")
+  }
+}

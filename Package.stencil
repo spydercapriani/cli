@@ -1,0 +1,32 @@
+// swift-tools-version: 5.8
+
+import PackageDescription
+
+let package = Package(
+    name: "{{ name }}",
+    products: [
+        .library(
+            name: "{{ name }}", 
+            targets: [
+                "{{ name }}",
+            ]
+        ),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/spydercapriani/swift-cli-tools.git", from: "1.0.0"),
+    ],
+    targets: [
+        .target(
+            name: "{{ name }}",
+            dependencies: [
+                .product(name: "CLITools", package: "swift-cli-tools"),
+            ]
+        ),
+        .testTarget(
+            name: "{{ name }}Tests",
+            dependencies: [
+                "{{ name }}"
+            ]
+        ),
+    ]
+)
